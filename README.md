@@ -8,7 +8,7 @@ use MHD\Peoplevox\Api\SessionProvider;
 use MHD\Peoplevox\Data\Credentials;
 use MHD\Peoplevox\Data\SearchClause;
 
-$wsdl = "https://wms.peoplevox.net/myclientid/integrationservicev4.asmx";
+$wsdl = "https://{your-WMS-Web-Address}/resources/integrationservicev4.asmx?wsdl";
 $soapClient = new SoapClient($wsdl);
 $credentials = new Credentials('clientId', 'username', 'password');
 
