@@ -1,5 +1,15 @@
 # Peoplevox API
 
+## API documentation
+
+https://peoplevox.github.io/Documentation/
+
+## Current features
+
+* data export,
+* data import,
+* code generation for data import templates.
+
 ## Example usage
 
 ```php
@@ -30,8 +40,9 @@ $salesOrders = $peoplevoxClient->getData(
 ```
 
 ## Save template generation
-In order to simplify save requests `SaveTemplateGenerator` class was created.
-Generated classes' properties will match your templates' configuration and should simplify imports.
+
+In order to simplify save requests `SaveTemplateGenerator` class was created. Generated classes' properties will match
+your templates' configuration and should simplify imports.
 
 ```php
 use MHD\Peoplevox\Utils\SaveTemplateGenerator;
