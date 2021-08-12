@@ -1,5 +1,6 @@
 {
   "name": "melvin-hamilton-digital/peoplevox-api",
+  "license": "MIT",
   "require": {
     "php": "^7.2",
     "ext-soap": "*",
