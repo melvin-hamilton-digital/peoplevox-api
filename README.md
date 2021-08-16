@@ -1,5 +1,7 @@
 # Peoplevox API
 
+[![build](https://img.shields.io/github/workflow/status/melvin-hamilton-digital/emarsys-api/PHP%20Composer)](https://github.com/melvin-hamilton-digital/peoplevox-api/actions/workflows/php.yml)
+
 ## API documentation
 
 https://peoplevox.github.io/Documentation/
