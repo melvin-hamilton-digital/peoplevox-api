@@ -7,7 +7,7 @@ use DateTime;
 /**
  * @link https://peoplevox.github.io/Documentation/#222-search-values
  */
-class SearchClause
+abstract class SearchClause
 {
     /**
      * @param int|string|DateTime $value

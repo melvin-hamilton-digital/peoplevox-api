@@ -12,6 +12,16 @@ class Client
     public const ACTION_DO_NOT_ALLOCATE = 1;
     public const ACTION_DELETE = 2;
 
+    public const EVENT_TYPE_AVAILABILITY_CHANGES = 'AvailabilityChanges';
+    public const EVENT_TYPE_SALES_ORDER_STATUS_CHANGES = 'SalesOrderStatusChanges';
+    public const EVENT_TYPE_GOODS_RECEIVED = 'GoodsReceived';
+    public const EVENT_TYPE_TRACKING_NUMBER_RECEIVED = 'TrackingNumberReceived';
+    public const EVENT_TYPE_INCREMENTAL_CHANGES = 'IncrementalChanges';
+    public const EVENT_TYPE_RETURNS = 'Returns';
+    public const EVENT_TYPE_DESPATCH_PACKAGE_TRACKING_NUMBER_RECEIVED = 'DespatchPackageTrackingNumberReceived';
+    public const EVENT_TYPE_ON_DESPATCH_ORDER_RECEIVED = 'OnDespatchOrderReceived';
+    public const EVENT_TYPE_DESPATCH_PACKAGE_DESPATCHED = 'DespatchPackageDespatched';
+
     /**
      * @var SoapClient
      */
@@ -83,6 +93,62 @@ class Client
         $result = $this->callApi('SaveData', ['saveRequest' => $data]);
 
         return $result->TotalCount;
+    }
+
+    /**
+     * @link https://peoplevox.github.io/Documentation/#2131-subscribeevent
+     * @link https://peoplevox.github.io/Documentation/#2134-event-subscription-data-types
+     */
+    public function subscribeEvent(
+        string $eventType,
+        string $callbackUrl,
+        string $filter = '',
+        ?bool  $encodeParameterData = null
+    ): int {
+        $data = [
+            'eventType' => $eventType,
+            'filter' => $filter,
+            'callbackUrl' => $callbackUrl,
+            'encodeParameterData' => $encodeParameterData
+        ];
+
+        $result = $this->callApi('SubscribeEvent', $data);
+
+        return $result->Detail;
+    }
+
+    /**
+     * @link https://peoplevox.github.io/Documentation/#2132-subscribepostevent
+     * @link https://peoplevox.github.io/Documentation/#2134-event-subscription-data-types
+     */
+    public function subscribePostEvent(
+        string $eventType,
+        string $postUrl,
+        string $postParams = '',
+        string $filter = '',
+        ?bool  $encodeParameterData = null
+    ): int {
+        $data = [
+            'eventType' => $eventType,
+            'filter' => $filter,
+            'postUrl' => $postUrl,
+            'postParams' => $postParams,
+            'encodeParameterData' => $encodeParameterData
+        ];
+
+        $result = $this->callApi('SubscribePostEvent', $data);
+
+        return $result->Detail;
+    }
+
+    /**
+     * @link https://peoplevox.github.io/Documentation/#2135-unsubscribeevent
+     */
+    public function unsubscribeEvent(int $subscriptionId)
+    {
+        $result = $this->callApi('UnsubscribeEvent', ['subscriptionId' => $subscriptionId]);
+
+        return $result->Detail;
     }
 
     public function callApi(string $action, array $data)

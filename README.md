@@ -70,3 +70,20 @@ $newOrder->SalesOrderNumber = '1234';
 $newOrder->Customer = 'John Doe';
 # ...
 ```
+
+## Event subscription
+
+When subscribing to events, please keep in mind, that currently it is not possible to retrieve the list of already
+subscribed events, neither from the Peoplevox web panel nor API. You should consider saving at least the event type and
+returned subscription ID to keep track of already subscribed events and be able to unsubscribe in the future.
+
+```php
+use MHD\Peoplevox\Api\Client;
+
+$subscriptionId = $peoplevoxClient->subscribePostEvent(
+    Client::EVENT_TYPE_AVAILABILITY_CHANGES,
+    'https://example.org/ProcessAvailabilityChanges',
+    'item={ItemCode}&amp;available={Available}'
+);
+# save event type and subscription ID
+```
