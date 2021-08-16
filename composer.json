@@ -3,7 +3,7 @@
   "description": "Peoplevox API integration",
   "license": "MIT",
   "require": {
-    "php": "^7.2",
+    "php": ">=7.2",
     "ext-soap": "*",
     "nette/php-generator": "^3.2"
   },
