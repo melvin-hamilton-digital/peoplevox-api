@@ -43,8 +43,9 @@ $salesOrders = $peoplevoxClient->getData(
 
 ## Save template generation
 
-In order to simplify save requests `SaveTemplateGenerator` class was created. Generated classes' properties will match
-your templates' configuration and should simplify imports.
+In order to simplify save requests this library
+provides [`SaveTemplateGenerator`](./src/Utils/SaveTemplateGenerator.php) class. Generated classes' properties will
+match your templates' configuration and should simplify data imports.
 
 ```php
 use MHD\Peoplevox\Utils\SaveTemplateGenerator;
